@@ -1,3 +1,19 @@
+### Note about this Fork:
+
+I'm coming back to SublimeText after a year or so using Atom. One thing I liked a lot was that certain keywords like `TODO` and `NOTE` were automatically highlighted inside comments. This was made possible by [Atom's TODO package](https://github.com/atom/language-todo).
+
+This fork changes the Ruby language syntax to include these keywords under the `storage.type.annotation` scope.
+
+<img width="368" alt="screen shot 2016-12-04 at 04 08 24" src="https://cloud.githubusercontent.com/assets/31735/20864083/d1620e24-b9d9-11e6-8c45-5cf1d92a6d31.png">
+
+Supported keywords:
+
+```
+TODO, FIXME, CHANGED, XXX, IDEA, HACK, NOTE, REVIEW, NB, BUG, QUESTION, COMBAK, TEMP, WARNING
+```
+
+For now, I don't plan to make a plugin out of this, so if you want this, download the [Ruby syntax file](https://github.com/pgaspar/Packages/blob/master/Ruby/Ruby.sublime-syntax) and use something like [PackageResourceViewer](https://github.com/skuroda/PackageResourceViewer) to edit this file in your Sublime Text installation.
+
 # Sublime Packages
 
 > **These packages are developed against the latest [Sublime Text 3 Dev Build](http://sublimetext.com/3dev). Bugs may exist on older builds, and the format used is not compatible with builds older than 3092.**
