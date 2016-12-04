@@ -75,6 +75,7 @@ variables:
   method_punctuation: '(?:[?!]|=(?![>=]))?'
   method_name: '{{identifier}}{{method_punctuation}}'
   path_lookahead: '(::)?({{identifier}}(\.|::))*{{identifier}}'
+  comment_annotations: '(TODO|FIXME|CHANGED|XXX|IDEA|HACK|NOTE|REVIEW|NB|BUG|QUESTION|COMBAK|TEMP|WARNING)'
 
 contexts:
   main:
@@ -103,13 +104,25 @@ contexts:
       scope: punctuation.definition.comment.ruby
       push:
         - meta_scope: comment.block.documentation.ruby
+        - include: comment-annotation
         - match: ^=end
           scope: punctuation.definition.comment.ruby
           pop: true
-    - match: '(#).*$\n?'
+    - match: '(#)'
       scope: comment.line.number-sign.ruby
       captures:
         1: punctuation.definition.comment.ruby
+      push:
+        - meta_scope: comment.line.number-sign.ruby
+        - include: comment-annotation
+        - match: '.*'
+        - match: '.*$\n?'
+          pop: true
+
+  comment-annotation:
+    - match: '\W*{{comment_annotations}}\b'
+      captures:
+        1: storage.type.annotation
 
   class:
     # Defining a class method
